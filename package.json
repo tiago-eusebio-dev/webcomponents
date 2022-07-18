@@ -4,9 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "build": "npm run build:custom-list && npm run build:custom-input",
+    "build:custom-list": "ng build custom-list --configuration production --output-hashing none && cat dist/custom-list/main.js dist/custom-list/polyfills.js dist/custom-list/runtime.js > dist/custom-list.js",
+    "build:custom-input": "ng build custom-input --configuration production --output-hashing none && cat dist/custom-input/main.js dist/custom-input/polyfills.js dist/custom-input/runtime.js > dist/custom-input.js"
   },
   "private": true,
   "dependencies": {
@@ -14,6 +14,7 @@
     "@angular/common": "^14.0.0",
     "@angular/compiler": "^14.0.0",
     "@angular/core": "^14.0.0",
+    "@angular/elements": "^14.0.6",
     "@angular/forms": "^14.0.0",
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
@@ -27,6 +28,7 @@
     "@angular/cli": "~14.0.6",
     "@angular/compiler-cli": "^14.0.0",
     "@types/jasmine": "~4.0.0",
+    "cat": "^0.2.0",
     "jasmine-core": "~4.1.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
